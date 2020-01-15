@@ -1,51 +1,47 @@
-const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
-const userModel = require('../models/userModel');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const userModel = require('../models/userModel')
 const User = mongoose.model('User');
-const config = require('../../config/secrets');
 
-exports.user_register = (req, res) => {
-  let {body} = req;
-  let new_user = new User(body)
-  // newUser.hash_password = bcrypt.hashSync(req.body.password, 10);
-  new_user.save((error, user) => {
-    if(error){
-      res.status(500);
-      console.log(error);
-      res.json({message: "Erreur serveur."});
-    }
-    else {
-      // user.hash_password = undefined;
-      res.status(201);
-      res.json(user);
-    }
-  })
+exports.register = function(req, res) {
+    var newUser = new User(req.body);
+    newUser.hash_password = bcrypt.hashSync(req.body.password, 10);
+    newUser.save((error, user) => {
+      if (error) {
+        res.status(500);
+        res.json({message: "Erreur lors de la création de l'user"});
+      } else {
+        user.hash_password = undefined;
+        return res.json(user);
+      }
+    });
 }
 
-exports.user_login = (req, res) => {
-  var {body} = req;
+exports.sign_in = function(req, res) {
+    User.findOne({
+        email: req.body.email
+      }, function(err, user) {
+        if (error) {
+            res.status(500);
+            res.json({message: "Erreur serveur lors de la connexion"})
+        }
+        if (!user) {
+         res.status(401).json({ message: 'Mot de passe ou email erroné' });
+       } else if (user) {
+         if (!user.comparePassword(req.body.password)) {
+           res.status(401).json({ message: 'Mot de passe ou email erroné' });
+          } else {
+            return res.json({token: jwt.sign({ email: user.email, fullName: user.fullName, _id: user._id}, 'nodejs_api')});
+          }
+        }
+      });
+}
 
-  User.findOne({email: body.email}, (error, user) => {
-    if(error){
-      res.status(500);
-      console.log(error);
-      res.json({message: "Erreur serveur."});
-    }
-    else{
-      if(user.email === body.email && user.password === body.password){
-        jwt.sign({user}, config.secrets.jwt_key, {expiresIn: '30 days'}, (error, token) => {
-          console.log(error);
-          if(error){
-            res.status(400);
-            console.log(error);
-            res.json({message: "Mot de passe ou email erroné."});
-          }
-          else{
-            // res.json({token: token})
-            res.json({token})
-          }
-        })
+exports.loginRequired = function(req, res, next) {
+    if (req.user) {
+        next();
+      } else {
+        return res.status(401).json({ message: 'Utilisateur non autorisé' });
       }
-    }
-  })
 }
