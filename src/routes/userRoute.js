@@ -1,6 +1,10 @@
-module.exports = (app) => {
-  const userController = require('../controllers/userController');
+// src/routes/userRoutes.js
+const user = require('../controllers/userController');
 
-  app.post('/register', userController.user_register);
-  app.post('/login', userController.user_login);
+module.exports = (app) => {
+    app.route('/auth/register')
+    .post(user.register);
+
+    app.route('/auth/sign_in')
+    .post(user.sign_in);
 }
