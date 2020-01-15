@@ -6,7 +6,7 @@ let userSchema = new Schema ({
     role: {
         type: String,
         required: true
-        //// les valeurs seront rempli via DDL mis en place au niveau du front
+        //// les valeurs seront rempli via DropDownList mis en place au niveau du front
     },
     email: {
         type: String,
@@ -33,3 +33,4 @@ UserSchema.methods.comparePassword = function(password) {
 };
 
 module.exports = mongoose.model('User', userSchema);
+
