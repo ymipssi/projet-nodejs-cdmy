@@ -7,7 +7,7 @@ const config = require('../../config/secrets');
 exports.user_register = (req, res) => {
   let {body} = req;
   let new_user = new User(body)
-
+  // newUser.hash_password = bcrypt.hashSync(req.body.password, 10);
   new_user.save((error, user) => {
     if(error){
       res.status(500);
@@ -15,6 +15,7 @@ exports.user_register = (req, res) => {
       res.json({message: "Erreur serveur."});
     }
     else {
+      // user.hash_password = undefined;
       res.status(201);
       res.json(user);
     }
