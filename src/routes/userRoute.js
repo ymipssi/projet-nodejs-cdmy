@@ -1,3 +1,4 @@
+// src/routes/userRoutes.js
 const user = require('../controllers/userController');
 
 module.exports = (app) => {
