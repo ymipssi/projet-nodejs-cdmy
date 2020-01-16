@@ -8,7 +8,7 @@ let sessionSchema = new Schema({
         required: "le nom est requis"
     },
     annee: {
-        type: String,
+        type: Number,
         required: "l année est requise"
     },
     created_at: {
