@@ -1,3 +1,3 @@
 exports.secrets = {
-  jwt_key: "3kW7qHZ7k6RxX2RNyz3c3LEY7UE57mKMmB5dWqzQzTuk6irYVLh544ta6me9JrQ337nC34228"
+  jwt_key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
 }
