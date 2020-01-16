@@ -5,7 +5,7 @@ const {Schema} = mongoose;
 let noteSchema = new Schema({
     note: {
         type: Number,
-        required: "le nom est requis"
+        required: "la note est requise"
     },
     message: {
         type: String,
