@@ -14,6 +14,14 @@ let userSchema = new Schema ({
         required: true,
         trim: true
     },
+    nom: {
+      type: String,
+      required: true
+    },
+    prenom: {
+      type: String,
+      required: true
+    },
     hash_password: {
         type: String,
         required: true
@@ -23,7 +31,7 @@ let userSchema = new Schema ({
         default: Date.now
     },
     user_id: {
-        type: String    
+        type: String
     }
 })
 
@@ -34,4 +42,3 @@ UserSchema.methods.comparePassword = function(password) {
 module.exports = mongoose.model('User', userSchema);
 
 module.exports = mongoose.model('User', userSchema);
-
