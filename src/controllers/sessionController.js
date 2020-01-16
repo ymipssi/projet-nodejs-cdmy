@@ -73,4 +73,3 @@ exports.delete_a_session = (req, res) => {
     }
   })
 }
-
