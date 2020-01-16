@@ -32,5 +32,8 @@ userRoutes(app);
 const noteRoutes= require ('./routes/noteRoute');
 noteRoutes(app);
 
+const sessionRoutes= require ('./routes/sessionRoute');
+sessionRoutes(app);
+
 //server.listen(port, hostname);
 app.listen(port, hostname);
