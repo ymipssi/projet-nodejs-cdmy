@@ -1,5 +1,4 @@
 //const http = require('http');
-
 const hostname = '0.0.0.0';
 const port = 3000;
 
@@ -14,25 +13,24 @@ const app = express();
 //   res.end('Hello World');
 // });
 
-// option pour enlever les warnings 
-
+// option pour enlever les warnings
 const mongooseParams = {
   useUnifiedTopology : true,
   useNewUrlParser : true,
   useCreateIndex : true
 }
 
-//server.listen(port, hostname);
-
-mongoose.connect('mongodb://mongo/sqynode', mongooseParams);
+mongoose.connect('mongodb://mongo/sqynode', mongooseParams); // docker (mongo = nom du container)
+// mongoose.connect('mongodb://localhost:27017/apinodeipssi', mongooseParams); // windows sans docker
 
 app.use( bodyParser.urlencoded({extended: true}) );
 app.use( bodyParser.json());
 
-const userRoute= require ('./api/routes/userRoute');
+const userRoute= require ('./src/routes/userRoute');
 userRoutes(app);
 
-const noteRoutes= require ('./api/routes/noteRoute');
+const noteRoutes= require ('./src/routes/noteRoute');
 noteRoutes(app);
 
+//server.listen(port, hostname);
 app.listen(port, hostname);
