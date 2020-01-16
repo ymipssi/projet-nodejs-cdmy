@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   node:
-    container_name: project_node
+    container_name: project_nodejs-cdmy
     image: 'node:latest'
     working_dir: /home/node/app
     command:
