@@ -26,10 +26,10 @@ mongoose.connect('mongodb://mongo/sqynode', mongooseParams); // docker (mongo = 
 app.use( bodyParser.urlencoded({extended: true}) );
 app.use( bodyParser.json());
 
-const userRoute= require ('./src/routes/userRoute');
+const userRoutes= require ('./routes/userRoute');
 userRoutes(app);
 
-const noteRoutes= require ('./src/routes/noteRoute');
+const noteRoutes= require ('./routes/noteRoute');
 noteRoutes(app);
 
 //server.listen(port, hostname);
