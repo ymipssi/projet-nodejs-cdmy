@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const moduleModel = require('../models/sessionModel');
-const Module = mongoose.model("Session");
+const sessionModel = require('../models/sessionModel');
+const Session = mongoose.model('Session');
 
 exports.get_all_sessions = (req, res) => {
   Session.find({}, (error, sessions) => {
@@ -17,11 +17,9 @@ exports.get_all_sessions = (req, res) => {
 }
 
 exports.create_a_session = (req, res) => {
-  req.body.user_id = req.params.id;
-  //req.body.session_id = req.params.session_id
-  let new_session = new Session(req.body);
+  var newSession = new Session(req.body);
 
-  new_session.save((error, user) => {
+  newSession.save((error, sessions) => {
     if(error){
       res.status(500);
       console.log(error);
@@ -29,7 +27,7 @@ exports.create_a_session = (req, res) => {
     }
     else {
       res.status(201);
-      res.json(user);
+      res.json(sessions);
     }
   })
 }

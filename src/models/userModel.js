@@ -35,7 +35,7 @@ let userSchema = new Schema ({
     }
 })
 
-UserSchema.methods.comparePassword = function(password) {
+userSchema.methods.comparePassword = function(password) {
     return bcrypt.compareSync(password, this.hash_password);
 };
 

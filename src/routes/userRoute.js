@@ -7,4 +7,10 @@ module.exports = (app) => {
 
     app.route('/sign_in')
     .post(user.sign_in);
+
+    app.route('/display')
+    .get(user.get_all_users);
+
+    app.route('/displayOne/:_id')
+    .get(user.get_a_user);
 }
