@@ -2,9 +2,9 @@
 const user = require('../controllers/userController');
 
 module.exports = (app) => {
-    app.route('/auth/register')
+    app.route('/register')
     .post(user.register);
 
-    app.route('/auth/sign_in')
+    app.route('/sign_in')
     .post(user.sign_in);
 }
