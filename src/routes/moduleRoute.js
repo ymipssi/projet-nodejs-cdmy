@@ -2,11 +2,11 @@ module.exports = (app) => {
   const moduleController = require('../controllers/moduleController');
   const jwtMiddleware = require('../middleware/jwtMiddleware');
 
- app.route('/user/:user_id/modules') // req.params.
+ app.route('/user/:user_id/modules') // req.params.user_id
   .get(moduleController.get_all_modules)
   .post(jwtMiddleware.verify_token, moduleController.create_a_module);
 
- app.route('/modules/id_module')
+ app.route('/modules/:module_id')
   .all(jwtMiddleware.verify_token)
   .get(moduleController.get_a_module)
   .put(moduleController.update_a_module)

@@ -77,4 +77,3 @@ exports.get_a_user = (req, res) => {
     }
   })
 }
-
