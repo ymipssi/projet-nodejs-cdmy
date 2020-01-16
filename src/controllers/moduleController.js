@@ -17,10 +17,11 @@ exports.get_all_modules = (req, res) => {
 }
 
 exports.create_a_module = (req, res) => {
-  req.body.user_id = req.params.id;
   //req.body.session_id = req.params.session_id
   let new_module = new Module(req.body);
-
+  new_module.user_id = req.params.user_id;
+	
+	
   new_module.save((error, user) => {
     if(error){
       res.status(500);
