@@ -11,6 +11,13 @@ module.exports = (app) => {
     app.route('/display')
     .get(user.get_all_users);
 
+    app.route('/display/intervenant')
+    .get(user.get_all_inters);
+
+    app.route('/display/etudiant')
+    .get(user.get_all_etud);
+
     app.route('/display/:_id')
     .get(user.get_a_user);
+
 }
