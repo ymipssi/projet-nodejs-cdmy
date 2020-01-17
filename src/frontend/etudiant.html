@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rate the Course - Etudiant</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <section class="mb-5">
+            <header>
+                <div class="row">
+                    <div class="col">
+                       <img src="images/logoIPSSI.png" alt="Logo de l'IPSSI" style="width: 50%;">
+                    </div>
+                    <div class="col">
+                        <div class="text-right pt-5">
+                            <button type="submit" class="btn btn-danger" onclick="deconnexion()">Déconnexion</button>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="row mb-1">
+                    <div class="mx-auto font-weight-bold text-center">
+                        <h1 class="font-weight-bold">RateMyCourse - CDMY</h1>
+                    </div>
+                </div> 
+                
+                <div class="row mb-3">
+                    <h2 class="mx-auto">Note les modules !</h2>
+                </div>
+    
+            </header>
+        </section>
+       
+        <!-- NOTER MODULES-->
+        <section>
+
+            <script> 
+                $(document).ready(function(){
+                    $("#buttonNoterModule").click(function(){
+                        $("#divNoterModule").slideToggle("slow");
+                    });
+                    $("#buttonEnvoyerNoteModule").click(function(){
+                        $("#divNoteModuleEnvoyee").css("display", "block");
+                    });
+                }); 
+            </script>
+                
+            <div class="row mb-3">
+                <div class="col">
+                    <u><h3>Liste des modules :</h3></u>
+                </div>
+            </div>
+
+            <section class="border border-dark p-3">
+
+                <div class="row mb-1">
+                    <div class="col-3">
+                        <span>Nom du module A </span>- <span>Année</span>
+                    </div>
+                    <div class="col-1">
+                        <button type="button" id="buttonNoterModule" class="btn btn-primary">Noter</button>
+                    </div>
+                </div>
+
+                <!-- FORMULAIRE NOTER MODULE -->
+                <div class="row">
+
+                    <div class="col p-3" style="display: none;" id="divNoterModule">
+                        <form>
+                            <div class="form-group">
+                                <label for="noteModule">Saisir une note (/20) :</label>
+                                <input type="number" class="form-control col-1 d-inline" id="noteModule" name="noteModule" placeholder="" min="0" max="20">
+                            </div>
+                            <div class="form-group">
+                                <label for="messageModule">Saisir un message :</label>
+                                <input type="text" class="form-control" id="messageModule" name="messageModule" placeholder="" maxlength="50">
+                            </div>
+
+                            <div>
+                                <button type="submit" class="btn btn-primary" id="buttonEnvoyerNoteModule">Envoyer la note</button>
+                            </div>
+                        </form>
+                    </div>
+
+                <!-- MODULE NOTE -->
+                <div class="col-12 p-3" style="display: none;" id="divNoteModuleEnvoyee">
+                    <h5 class="font-weight-bold text-success">Merci d'avoir noté ce module !</h5>
+                </div>
+
+            </section>
+            
+        </section>
+
+    </div>
+    
+</body>
+
+</html>
