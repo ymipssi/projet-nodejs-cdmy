@@ -4,58 +4,489 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Rate the Course - Etudiant</title>
+    <title>Rate the Course - Administrateur</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 </head>
+
 <body>
     
-    <!-- HEADER -->
-    <header>
-        <div class="row">
-            <div class="ml-auto col-2 p-3">
-                <a class="pr-3" href="index.html">Accueil</a>
-                <a class="pr-3" href="etudiant.html">Etudiant</a>
-                <a href="admin.html">Administrateur</a>
-            </div>
-        </div>
+    <div class="container">
 
-        <div class="row">
-           <h1 class="mx-auto">RATE THE COURSE - CDMY</h1>
-        </div>
+            <!-- HEADER -->
+            <section class="mb-5">
+                <header>
+                    <div class="row">
+                        <div class="col">
+                           <img src="images/logoIPSSI.png" alt="Logo de l'IPSSI" style="width: 50%;">
+                        </div>
+                        <div class="col">
+                            <div class="text-right pt-5">
+                                <button type="submit" class="btn btn-danger" onclick="deconnexion()">Déconnexion</button>
+                            </div>
+                        </div>
+                    </div>
         
-    </header>
-
-    <!-- SECTION MODULES -->
-    <section>
+                    <div class="row mb-1">
+                        <div class="mx-auto font-weight-bold text-center">
+                            <h1 class="font-weight-bold">RateMyCourse - CDMY</h1>
+                        </div>
+                    </div> 
+                    
+                    <div class="row mb-3">
+                        <h2 class="mx-auto">Portail d'administration</h2>
+                    </div>
         
-        <div class="container border border-dark">
+                </header>
+            </section>
+    
+            <!-- SECTIONS -->
+            <section>
 
-            <div class="row">
-                <div class="col-10">
-                    <u><h2>Liste des modules</h2></u>
-                </div>
-                <div class="col-2 p-1">
-                    <button type="button" class="btn btn-primary">Créer un module</button>
-                </div>
-            </div>
+                <!-- SECTION MODULES -->
+                <section class="col p-3 mb-3 mx-auto border border-dark">
+        
+                    <script> 
+                        $(document).ready(function(){
+                        $("#buttonCreerModule").click(function(){
+                            $("#divSupprimerModule").slideUp();
+                            $("#divVoirNoteMoyenneModule").slideUp();
+                            $("#divVoirModule").slideUp();
+                            $("#divCreerModule").slideToggle("slow");
+                        });  
+                        $("#buttonVoirModule").click(function(){
+                            $("#divCreerModule").slideUp();
+                            $("#divSupprimerModule").slideUp();
+                            $("#divVoirNoteMoyenneModule").slideUp();
+                            $("#divVoirModule").slideToggle("slow");
+                        });
+                        $("#buttonModifierModule").click(function(){
+                            $("#divCreerModule").slideUp();
+                            $("#divSupprimerModule").slideUp();
+                            $("#divVoirNoteMoyenneModule").slideUp();
+                            $("#divModifierModule").slideToggle("slow");
+                        });
+                        $("#buttonSupprimerModule").click(function(){
+                            $("#divCreerModule").slideUp();
+                            $("#divVoirModule").slideUp();
+                            $("#divModifierModule").slideUp();
+                            $("#divVoirNoteMoyenneModule").slideUp();
+                            $("#divSupprimerModule").slideToggle("slow");
+                        });
+                        $("#buttonVoirNoteMoyenneModule").click(function(){
+                            $("#divCreerModule").slideUp();
+                            $("#divVoirModule").slideUp();
+                            $("#divModifierModule").slideUp();
+                            $("#divSupprimerModule").slideUp();
+                            $("#divVoirNoteMoyenneModule").slideToggle("slow");
+                        });
+                        });
+                    </script>
+        
+                        <div class="row mb-3">
+                            <div class="col-10">
+                                <u><h2>MODULES</h2></u>
+                            </div>
+                            <div class="col-2 p-1">
+                                <button type="button" id="buttonCreerModule" class="btn btn-primary">Créer un module</button>
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="col-3">
+                                <span>Nom du module A </span>- <span>Année</span>
+                            </div>
+                            <div class="col-5">
+                                <button type="button" id= "buttonVoirModule" class="btn btn-dark">Voir</button>
+                                <button type="button" id= "buttonModifierModule" class="btn btn-warning">Modifier</button>
+                                <button type="submit" id= "buttonSupprimerModule" class="btn btn-danger">Supprimer</button>
+                                <button type="button" id= "buttonVoirNoteMoyenneModule" class="btn btn-success">Voir note moyenne</button>
+                            </div>
+                        </div>
+        
+                    
+                        <div class="row">
+        
+                            <!-- CREER MODULE -->
+                            <div class="col-8 p-3" style="display: none;" id="divCreerModule">
+        
+                                <u><h6 class="font-weight-bold">Créer un module :</h6></u>
+                                
+                                <form class="p-3">
+                                    <div class="form-group">
+                                        <label for="nomModule">Nom du module :</label>
+                                        <input type="text" class="form-control" id="nomModule" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="intervenantModule">Intervenant :</label>
+                                        <select name="pets" id="intervenantModule">
+                                            <option value="">-- Nom de l'intervant --</option>
+                                            <option value="intervenantA">Intervenant A</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sessionModule">Nom de la session :</label>
+                                        <input type="text" class="form-control" id="sessionModule" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="dateDebutModule">Date de début du module :</label>
+                                        <input type="date" class="form-control" id="dateDebutModule" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="dateFinModule">Date de fin du module :</label>
+                                        <input type="date" class="form-control" id="dateFinModule" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="dateCreationModule">Créé le :</label>
+                                        <input type="date" class="form-control" id="dateCreationModule" placeholder="">
+                                    </div>
+        
+                                    <div>
+                                        <button type="submit" class="btn btn-primary">Créer</button>
+                                    </div>
+                                </form>
+        
+                            </div>
+        
+                            <!-- VOIR MODULE -->
+                            <div class="col-4 p-3" style="display: none;" id="divVoirModule">
+                                <u><h6 class="font-weight-bold">Informations sur le module :</h6></u>
+                                <ul>
+                                    <li class="font-weight-bold">Nom du module : <span>Module A</span></li>
+                                    <li class="font-weight-bold">Nom de l'intervenant : <span>Intervenant A</span></li>
+                                    <li class="font-weight-bold">Nom de la session : <span>XXXX</span></li>
+                                    <li class="font-weight-bold">Date de début du module : <span>XX/XX/XXXX</span></li>
+                                    <li class="font-weight-bold">Date de fin du module : <span>XX/XX/XXXX</span></li>
+                                    <li class="font-weight-bold">Créé le : <span>XX/XX/XXXX</span></li>
+                                </ul>
+                            </div>
+        
+                            <!-- MODIFIER MODULE -->
+                            <div class="col-8 p-3" style="display: none;" id="divModifierModule">
+        
+                                <u><h6 class="font-weight-bold">Modifier le module :</h6></u>
+                                
+                                <form class="p-3">
+                                    <div class="form-group">
+                                        <label for="nomModule">Nom du module :</label>
+                                        <input type="text" class="form-control" id="nomModule" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="intervenantModule">Intervenant :</label>
+                                        <select name="pets" id="intervenantModule">
+                                            <option value="">-- Nom de l'intervant --</option>
+                                            <option value="intervenantA">Intervenant A</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sessionModule">Nom de la session :</label>
+                                        <input type="text" class="form-control" id="sessionModule" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="dateDebutModule">Date de début du module :</label>
+                                        <input type="date" class="form-control" id="dateDebutModule" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="dateFinModule">Date de fin du module :</label>
+                                        <input type="date" class="form-control" id="dateFinModule" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="dateCreationModule">Créé le :</label>
+                                        <input type="date" class="form-control" id="dateCreationModule" placeholder="">
+                                    </div>
+        
+                                    <div>
+                                        <button type="submit" class="btn btn-success">Modifier</button>
+                                    </div>
+                                </form>
+        
+                            </div>
+        
+                            <!-- SUPPRIMER MODULE -->
+                            <div class="col-12 p-3" style="display: none;" id="divSupprimerModule">
+                                <h5 class="font-weight-bold text-danger">Module supprimé !</h5>
+                            </div>
+        
+                            <!-- VOIR NOTE MODULE -->
+                            <div class="col-12 p-3" style="display: none;" id="divVoirNoteMoyenneModule">
+                                <h5 class="font-weight-bold text-success">Note du module : XX/20 !</h5>
+                            </div>
+        
+                        </div>
+                        
+        
+                </section>
+        
+                <!-- SECTION SESSIONS -->
+                <section class="col p-3 mb-3 mx-auto border border-dark">
+        
+                    <script> 
+                        $(document).ready(function(){
+                        $("#buttonCreerSession").click(function(){
+                            $("#divSupprimerSession").slideUp();
+                            $("#divVoirSession").slideUp();
+                            $("#divCreerSession").slideToggle("slow");
+                        });  
+                        $("#buttonVoirSession").click(function(){
+                            $("#divCreerSession").slideUp();
+                            $("#divSupprimerSession").slideUp();
+                            $("#divVoirSession").slideToggle("slow");
+                        });
+                        $("#buttonModifierSession").click(function(){
+                            $("#divCreerSession").slideUp();
+                            $("#divSupprimerSession").slideUp();
+                            $("#divModifierSession").slideToggle("slow");
+                        });
+                        $("#buttonSupprimerSession").click(function(){
+                            $("#divCreerSession").slideUp();
+                            $("#divVoirSession").slideUp();
+                            $("#divModifierSession").slideUp();
+                            $("#divSupprimerSession").slideToggle("slow");
+                        });
+                        });
+                    </script>
+        
+                        <div class="row mb-3">
+                            <div class="col-10">
+                                <u><h2>SESSIONS</h2></u>
+                            </div>
+                            <div class="col-2 p-1">
+                                <button type="button" id= "buttonCreerSession" class="btn btn-primary">Créer une session</button>
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="col-3">
+                                <span>Nom de la session A </span>- <span>Année</span>
+                            </div>
+                            <div class="col-5">
+                                <button type="button" id= "buttonVoirSession" class="btn btn-dark">Voir</button>
+                                <button type="button" id= "buttonModifierSession" class="btn btn-warning">Modifier</button>
+                                <button type="submit" id= "buttonSupprimerSession" class="btn btn-danger">Supprimer</button>
+                            </div>
+                        </div>
+        
+                    
+                        <div class="row">
+        
+                            <!-- CREER SESSION -->
+                            <div class="col-8 p-3" style="display: none;" id="divCreerSession">
+        
+                                <u><h6 class="font-weight-bold">Créer une session :</h6></u>
+                                
+                                <form class="p-3">
+                                    <div class="form-group">
+                                        <label for="nomSession">Nom de la session :</label>
+                                        <input type="text" class="form-control" id="nomSession" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="anneeSession">Nom de l'intervenant :</label>
+                                        <input type="text" class="form-control" id="anneeSession" placeholder="">
+                                    </div>
+        
+                                    <div>
+                                        <button type="submit" class="btn btn-primary">Créer</button>
+                                    </div>
+                                </form>
+        
+                            </div>
+        
+                            <!-- VOIR SESSION -->
+                            <div class="col-4 p-3" style="display: none;" id="divVoirSession">
+                                <u><h6 class="font-weight-bold">Informations sur la session :</h6></u>
+                                <ul>
+                                    <li class="font-weight-bold">Nom de la promo : <span>Session A</span></li>
+                                    <li class="font-weight-bold">Année : <span>Année</span></li>
+                                </ul>
+                            </div>
+        
+                            <!-- MODIFIER SESSION -->
+                            <div class="col-8 p-3" style="display: none;" id="divModifierSession">
+        
+                                <u><h6 class="font-weight-bold">Modifier la session :</h6></u>
+                                
+                                <form class="p-3">
+                                    <div class="form-group">
+                                        <label for="nomSession">Nom de la session :</label>
+                                        <input type="text" class="form-control" id="nomSession" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="anneeSession">Nom de l'intervenant :</label>
+                                        <input type="text" class="form-control" id="anneeSession" placeholder="">
+                                    </div>
+        
+                                    <div>
+                                        <button type="submit" class="btn btn-success">Modifier</button>
+                                    </div>
+                                </form>
+        
+                            </div>
+        
+                            <!-- SUPPRIMER SESSION -->
+                            <div class="col-12 p-3" style="display: none;" id="divSupprimerSession">
+                                <h5 class="font-weight-bold text-danger">Session supprimée !</h5>
+                            </div>
+        
+                        </div>
+                        
+        
+                </section>
+        
+                <!-- SECTION UTILISATEURS -->
+                <section class="col p-3 mb-3 mx-auto border border-dark">
+        
+                    <script> 
+                        $(document).ready(function(){
+                        $("#buttonCreerUtilisateur").click(function(){
+                            $("#divSupprimerUtilisateur").slideUp();
+                            $("#divVoirUtilisateur").slideUp();
+                            $("#divCreerUtilisateur").slideToggle("slow");
+                        });  
+                        $("#buttonVoirUtilisateur").click(function(){
+                            $("#divCreerUtilisateur").slideUp();
+                            $("#divSupprimerUtilisateur").slideUp();
+                            $("#divVoirUtilisateur").slideToggle("slow");
+                        });
+                        $("#buttonModifierUtilisateur").click(function(){
+                            $("#divCreerUtilisateur").slideUp();
+                            $("#divSupprimerUtilisateur").slideUp();
+                            $("#divModifierUtilisateur").slideToggle("slow");
+                        });
+                        $("#buttonSupprimerUtilisateur").click(function(){
+                            $("#divCreerUtilisateur").slideUp();
+                            $("#divVoirUtilisateur").slideUp();
+                            $("#divModifierUtilisateur").slideUp();
+                            $("#divSupprimerUtilisateur").slideToggle("slow");
+                        });
+                        });
+                    </script>
+        
+                        <div class="row mb-3">
+                            <div class="col-10">
+                                <u><h2>UTILISATEURS</h2></u>
+                            </div>
+                            <div class="col-2 p-1">
+                                <button type="button" id= "buttonCreerUtilisateur" class="btn btn-primary">Créer un utilisateur</button>
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="col-3">
+                                <span>Nom </span>et <span>Prénom </span>de l'utilisateur
+                            </div>
+                            <div class="col-5">
+                                <button type="button" id= "buttonVoirUtilisateur" class="btn btn-dark">Voir</button>
+                                <button type="button" id= "buttonModifierUtilisateur" class="btn btn-warning">Modifier</button>
+                                <button type="submit" id= "buttonSupprimerUtilisateur" class="btn btn-danger">Supprimer</button>
+                            </div>
+                        </div>
+        
+                    
+                        <div class="row">
+        
+                            <!-- CREER UTILISATEUR -->
+                            <div class="col-8 p-3" style="display: none;" id="divCreerUtilisateur">
+        
+                                <u><h6 class="font-weight-bold">Créer un utilisateur :</h6></u>
+                                
+                                <form class="p-3">
+                                    <div class="form-group">
+                                        <label for="roleUtilisateur">Role :</label><br>
+                                        <input type="radio" name="roleUtilisateur" id="roleUtilisateur" value="administrateur" checked> Administrateur 
+                                        <input type="radio" name="roleUtilisateur" id="roleUtilisateur" value="intervenant"> Intervenant
+                                        <input type="radio" name="roleUtilisateur" id="roleUtilisateur" value="etudiant"> Etudiant  
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nomUtilisateur">Nom :</label>
+                                        <input type="text" class="form-control" id="nomUtilisateur" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="prenomUtilisateur">Prénom :</label>
+                                        <input type="text" class="form-control" id="prenomUtilisateur" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="emailUtilisateur">E-mail :</label>
+                                        <input type="text" class="form-control" id="emailUtilisateur" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="motDePasseUtilisateur">Mot de passe :</label>
+                                        <input type="text" class="form-control" id="motDePasseUtilisateur" placeholder="">
+                                    </div>
+        
+                                    <div>
+                                        <button type="submit" class="btn btn-primary">Créer</button>
+                                    </div>
+                                </form>
+        
+                            </div>
+        
+                            <!-- VOIR UTILISATEUR -->
+                            <div class="col-4 p-3" style="display: none;" id="divVoirUtilisateur">
+                                <u><h6 class="font-weight-bold">Informations sur l'utilisateur :</h6></u>
+                                <ul>
+                                    <li class="font-weight-bold">Role : <span>Role</span></li>
+                                    <li class="font-weight-bold">Nom : <span>Nom A</span></li>
+                                    <li class="font-weight-bold">Prénom : <span>Prénom A</span></li>
+                                    <li class="font-weight-bold">E-mail : <span>Email A</span></li>
+                                    <li class="font-weight-bold">Mot de passe : <span>Mot de passe</span></li>
+                                </ul>
+                            </div>
+        
+                            <!-- MODIFIER UTILISATEUR -->
+                            <div class="col-8 p-3" style="display: none;" id="divModifierUtilisateur">
+        
+                                <u><h6 class="font-weight-bold">Modifier l'utilisateur :</h6></u>
+                                
+                                <form class="p-3">
+                                    <div class="form-group">
+                                        <label for="roleUtilisateur">Role :</label><br>
+                                        <input type="radio" name="roleUtilisateur" id="roleUtilisateur" value="administrateur" checked> Administrateur 
+                                        <input type="radio" name="roleUtilisateur" id="roleUtilisateur" value="intervenant"> Intervenant
+                                        <input type="radio" name="roleUtilisateur" id="roleUtilisateur" value="etudiant"> Etudiant  
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nomUtilisateur">Nom :</label>
+                                        <input type="text" class="form-control" id="nomUtilisateur" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="prenomUtilisateur">Prénom :</label>
+                                        <input type="text" class="form-control" id="prenomUtilisateur" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="emailUtilisateur">E-mail :</label>
+                                        <input type="text" class="form-control" id="emailUtilisateur" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="motDePasseUtilisateur">Mot de passe :</label>
+                                        <input type="text" class="form-control" id="motDePasseUtilisateur" placeholder="">
+                                    </div>
+        
+                                    <div>
+                                        <button type="submit" class="btn btn-success">Modifier</button>
+                                    </div>
+                                </form>
+        
+                            </div>
+        
+                            <!-- SUPPRIMER UTILISATEUR -->
+                            <div class="col-12 p-3" style="display: none;" id="divSupprimerUtilisateur">
+                                <h5 class="font-weight-bold text-danger">Utilisateur supprimé !</h5>
+                            </div>
+        
+                        </div>
+                        
+        
+                </section>
 
-            <div class="row">
-                <div class="col-6">
-                    <span>Nom du module A </span>- <span>Année</span>
-                </div>
-                <div class="col-3">
-                    <button type="button" class="btn btn-primary">Voir </button>
-                </div>
-            </div>
-            
-        </div>
+            </section>
 
-
-    </section>
+    </div>
+    
 
 </body>
 </html>
