@@ -30,7 +30,7 @@ exports.sign_in = function(req, res) {
         if (!user) {
          res.status(401).json({ message: 'Mot de passe ou email erroné' });
        } else if (user) {
-         if (!user.comparePassword(req.body.password)) {
+         if (!user.comparePassword(req.body.hash_password)) {
            res.status(401).json({ message: 'Mot de passe ou email erroné' });
           } else {
             return res.json({token: jwt.sign({ email: user.email, nom: user.nom, prenom: user.prenom, _id: user._id}, 'nodejs_api')});
