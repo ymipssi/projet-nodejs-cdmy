@@ -16,6 +16,50 @@ exports.get_all_notes = (req, res) => {
   })
 }
 
+exports.get_a_moduleNote = (req, res) => {
+  Note.find({module_id: req.params.module_id}, (error, moduleNote) => {
+    if(error){
+      res.status(500);
+      console.log(error);
+      res.json({message: "Erreur serveur."});
+    }
+    else {
+      res.status(200);
+
+      let tabNote = [];
+
+      for (let i = 0; i < moduleNote.length; i++) {
+        tabNote.push(moduleNote[i].note)
+      }
+
+        res.json(tabNote);
+      };
+  })
+}
+
+exports.get_moyenneNote = (req, res) => {
+  Note.find({module_id: req.params.module_id}, (error, moduleNote) => {
+    if(error){
+      res.status(500);
+      console.log(error);
+      res.json({message: "Erreur serveur."});
+    }
+    else {
+      res.status(200);
+
+      let somme = 0;
+
+      for (let i = 0; i < moduleNote.length; i++) {
+        somme += moduleNote[i].note;
+      }
+
+        res.json(somme / moduleNote.length);
+      };
+  })
+}
+
+
+
 exports.create_a_note = (req, res) => {
   // req.body.module_id = req.params.module_id;
   let new_note = new Note(req.body);
