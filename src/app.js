@@ -29,11 +29,13 @@ app.use( bodyParser.json());
 const userRoutes= require ('./routes/userRoute');
 userRoutes(app);
 
-const noteRoutes= require ('./routes/noteRoute');
-noteRoutes(app);
-
 const sessionRoutes= require ('./routes/sessionRoute');
 sessionRoutes(app);
 
+const moduleRoutes= require ('./routes/moduleRoute');
+moduleRoutes(app);
+
+const noteRoutes= require ('./routes/noteRoute');
+noteRoutes(app);
 //server.listen(port, hostname);
 app.listen(port, hostname);
