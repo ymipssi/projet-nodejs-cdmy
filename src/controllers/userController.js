@@ -6,8 +6,8 @@ const User = mongoose.model('User');
 
 exports.register = function(req, res) {
     var newUser = new User(req.body);
-    newUser.hash_password = bcrypt.hashSync(req.body.password, 10);
-    //console.log('testhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh');
+    newUser.hash_password = bcrypt.hashSync(req.body.hash_password, 10);
+    
     newUser.save((error, user) => {
       if (error) {
         res.status(500);
@@ -30,7 +30,7 @@ exports.sign_in = function(req, res) {
         if (!user) {
          res.status(401).json({ message: 'Mot de passe ou email erroné' });
        } else if (user) {
-         if (!user.comparePassword(req.body.password)) {
+         if (!user.comparePassword(req.body.hash_password)) {
            res.status(401).json({ message: 'Mot de passe ou email erroné' });
           } else {
             return res.json({token: jwt.sign({ email: user.email, nom: user.nom, prenom: user.prenom, _id: user._id}, 'nodejs_api')});
@@ -77,4 +77,3 @@ exports.get_a_user = (req, res) => {
     }
   })
 }
-

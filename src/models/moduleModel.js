@@ -20,10 +20,10 @@ let moduleSchema = new Schema({
         default: Date.now
     },
     user_id: {
-        type: String    
+        type: String
     },
     session_id: {
-        type: String    
+        type: String
     }
 })
 

@@ -11,6 +11,6 @@ module.exports = (app) => {
     app.route('/display')
     .get(user.get_all_users);
 
-    app.route('/displayOne/:_id')
+    app.route('/display/:_id')
     .get(user.get_a_user);
 }
