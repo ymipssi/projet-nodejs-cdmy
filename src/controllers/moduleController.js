@@ -3,7 +3,7 @@ const moduleModel = require('../models/moduleModel');
 const Module = mongoose.model("Module");
 
 exports.get_all_modules = (req, res) => {
-  Module.find({user_id: req.params.user_id}, (error, modules) => {
+  Module.find({}, (error, modules) => {
     if(error){
       res.status(500);
       console.log(error);
@@ -17,11 +17,10 @@ exports.get_all_modules = (req, res) => {
 }
 
 exports.create_a_module = (req, res) => {
-  req.body.user_id = req.params.user_id;
-  //req.body.session_id = req.params.session_id
-  let new_module = new Module(req.body);
+  // req.body.user_id = req.params.user_id;
+  var new_module = new Module(req.body);
 
-  new_module.save((error, user) => {
+  new_module.save((error, modules) => {
     if(error){
       res.status(500);
       console.log(error);
@@ -29,7 +28,7 @@ exports.create_a_module = (req, res) => {
     }
     else {
       res.status(201);
-      res.json(user);
+      res.json(modules);
     }
   })
 }

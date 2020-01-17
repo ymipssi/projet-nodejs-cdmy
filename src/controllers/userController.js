@@ -7,7 +7,7 @@ const User = mongoose.model('User');
 exports.register = function(req, res) {
     var newUser = new User(req.body);
     newUser.hash_password = bcrypt.hashSync(req.body.hash_password, 10);
-    //console.log('testhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh');
+    
     newUser.save((error, user) => {
       if (error) {
         res.status(500);
