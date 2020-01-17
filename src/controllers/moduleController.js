@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const moduleModel = require('../models/commentModel');
+const moduleModel = require('../models/moduleModel');
 const Module = mongoose.model("Module");
 
 exports.get_all_modules = (req, res) => {
